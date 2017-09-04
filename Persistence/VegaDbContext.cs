@@ -11,6 +11,8 @@ namespace aspnetcore_spa.Persistence
 
         public DbSet<Feature> Features { get; set; }
 
+        public DbSet<Vehicle> Vehicles { get; set; }
+
         public VegaDbContext(DbContextOptions<VegaDbContext> options) : base(options)
         {
 
