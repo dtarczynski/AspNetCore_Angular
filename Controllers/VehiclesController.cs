@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using aspnetcore_spa.Controllers.Resources;
 using aspnetcore_spa.Models;
@@ -21,7 +22,11 @@ namespace aspnetcore_spa.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVehicle([FromBody]VehicleResource vehicleResource)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+                
             var vehicle = mapper.Map<VehicleResource, Vehicle>(vehicleResource);
+            vehicle.LastUpdate = DateTime.Now;
             context.Vehicles.Add(vehicle);
             await context.SaveChangesAsync();
 
