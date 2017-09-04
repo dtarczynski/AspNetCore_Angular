@@ -1,3 +1,4 @@
+import { FeatureService } from './services/feature.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -37,7 +38,8 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
         ])
     ],
     providers: [
-        MakeService
+        MakeService,
+        FeatureService
     ]
 })
 export class AppModuleShared {
