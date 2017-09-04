@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { MakeService } from './services/make.service';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -17,13 +19,14 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent,
+        HomeComponent, 
         VehicleFormComponent
     ],
     imports: [
         CommonModule,
         HttpModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
@@ -32,6 +35,9 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
+    ],
+    providers: [
+        MakeService
     ]
 })
 export class AppModuleShared {
